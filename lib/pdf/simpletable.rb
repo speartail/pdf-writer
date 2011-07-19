@@ -459,7 +459,8 @@ class PDF::SimpleTable
         if @shade_headings
           pdf.close_object
           pdf.fill_color! @shade_heading_color
-          pdf.rectangle(x0 - @gap / 2.0, y, x1 - x0, _height).fill
+        # pdf.rectangle(x0 - @gap / 2.0, y, x1 - x0, _height).fill
+          pdf.rectangle(x0 - @gap / 2.0, y - 2, x1 - x0, _height + 2).fill
           pdf.reopen_object(hOID)
           pdf.close_object
           pdf.restore_state
