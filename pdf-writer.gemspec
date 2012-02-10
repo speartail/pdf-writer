@@ -9,18 +9,20 @@
 # $Id$
 #++
 
+lib = File.expand_path('../lib/', __FILE__)
+$:.unshift lib unless $:.include?(lib)
+
 spec = Gem::Specification.new do |s|
   s.name              = 'pdf-writer'
-  s.version           = '1.1.4'
-  s.summary           = %q(A pure Ruby PDF document creation library.)
+  s.version           = PDFWriter::VERSION
   s.platform          = Gem::Platform::RUBY
+  s.summary           = %q(A pure Ruby PDF document creation library.)
 
   s.has_rdoc          = true
   s.rdoc_options      = %w(--title PDF::Writer --main README --line-numbers)
   s.extra_rdoc_files  = %w(README ChangeLog LICENCE)
 
-  files   = %w(README LICENCE ChangeLog bin/**/* lib/**/* demo/**/*
-             images/**/* demo/**/* manual.pwd)
+  files = %w(README LICENCE ChangeLog bin/**/* lib/**/* demo/**/* images/**/* demo/**/* manual.pwd)
   s.files = FileList[*files]
 
   s.autorequire       = %(pdf/writer)
@@ -44,5 +46,6 @@ spec = Gem::Specification.new do |s|
   s.description = description[1..-1].join(" ")
 
   s.add_dependency('color', '>= 1.4.0')
+  s.add_dependency('meta_project')
   s.add_dependency('transaction-simple', '~> 1.3')
 end
